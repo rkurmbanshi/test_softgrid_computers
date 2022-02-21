@@ -250,11 +250,10 @@ $(function(){
 
 				/** parse data to json */
 				let success_data = JSON.parse(data);
-				let partnerdata = success_data.data;
-				for (let i = 0; i < partnerdata.length; i++) {
-					console.log(partnerdata[i].id);
-					$(document).find('.partner-list-data-wrap-'+partnerdata[i].id).text(partnerdata[i].total_request);
-				}
+				var  partnerdata = success_data.data;
+				jQuery.each( partnerdata, function( i, val ) {
+					$(document).find('.partner-list-data-wrap-'+val.id).text(val.total_request);
+				});
 				$(document).find('.total-api-request-all-data').text(partnerdata.total_api_request);
 			}
 		});
